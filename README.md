@@ -1,4 +1,4 @@
-# PSN_OS
+# PSN_OS par Devframeonyx et LeGameurPSN_YT
 
 Système d'exploitation Linux personnalisé, basé sur **Debian (live-build)**, avec :
 
