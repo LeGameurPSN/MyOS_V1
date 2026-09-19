@@ -1,0 +1,16 @@
+#!/bin/sh
+# Ajoute les dépôts tiers nécessaires AVANT l'installation des paquets
+set -e
+
+# --- VS Code (Microsoft) ---
+apt-get install -y curl gnupg apt-transport-https ca-certificates
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" \
+    > /etc/apt/sources.list.d/vscode.list
+
+# --- Flatpak + Flathub (mini "App Store" pour compléter les paquets de base) ---
+apt-get install -y flatpak
+apt-get install -y gnome-software-plugin-flatpak || true
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+
+apt-get update

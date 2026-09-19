@@ -27,11 +27,17 @@ PSN_OS/
 
 ```bash
 sudo apt update
-sudo apt install -y live-build git
+sudo apt install -y live-build git debian-archive-keyring
 git clone <ton-repo> PSN_OS && cd PSN_OS
 sudo ./build.sh
 # → génère psnos-<date>.iso à la racine
 ```
+
+> Si tu builds depuis une machine **Ubuntu** (comme les runners GitHub Actions),
+> `debian-archive-keyring` est indispensable : sans lui, `debootstrap` échoue avec
+> une erreur de signature/miroir, car live-build utilise par défaut les miroirs
+> Ubuntu au lieu des miroirs Debian. `build.sh` force déjà les miroirs Debian
+> (`deb.debian.org`) explicitement pour éviter ce piège.
 
 ## Builder automatiquement via GitHub
 

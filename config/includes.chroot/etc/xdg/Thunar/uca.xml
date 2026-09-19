@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <action>
+    <icon>wine</icon>
+    <name>Ouvrir avec Wine</name>
+    <unique-id>1600000000000000-1</unique-id>
+    <command>wine %f</command>
+    <description>Lancer ce fichier .exe avec Wine</description>
+    <patterns>*.exe;*.msi;*.bat</patterns>
+    <other-files/>
+  </action>
+</actions>

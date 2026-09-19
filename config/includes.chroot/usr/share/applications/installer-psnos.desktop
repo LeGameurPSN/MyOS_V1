@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Installer PSN_OS
+Comment=Installer PSN_OS sur le disque
+Exec=sudo calamares
+Icon=/etc/calamares/branding/psnos/logo.png
+Categories=System;
+Terminal=false
