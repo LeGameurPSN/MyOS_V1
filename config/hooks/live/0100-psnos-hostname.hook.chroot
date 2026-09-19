@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-echo "psnos" > /etc/hostname
-sed -i "s/127.0.1.1.*/127.0.1.1\tpsnos/" /etc/hosts 2>/dev/null || echo "127.0.1.1	psnos" >> /etc/hosts
-systemctl enable NetworkManager.service || true
-systemctl enable lightdm.service || true

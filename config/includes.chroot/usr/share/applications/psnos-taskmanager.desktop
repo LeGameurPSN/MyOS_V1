@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Gestionnaire des tâches
-Comment=Voir et gérer les processus en cours
-Exec=xfce4-taskmanager
-Icon=utilities-system-monitor
-Categories=System;Monitor;
-Terminal=false
