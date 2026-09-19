@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Panneau de configuration PSN_OS
+Comment=Réseau, tâches, son, utilisateurs, sécurité...
+Exec=/usr/local/bin/psnos-control-panel
+Icon=preferences-system
+Categories=Settings;System;
+Terminal=false

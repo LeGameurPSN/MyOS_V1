@@ -1,0 +1,49 @@
+#!/bin/bash
+# psnos-control-panel — Panneau de configuration façon Windows
+
+while true; do
+CHOICE=$(zenity --list --title="PSN_OS — Panneau de configuration" \
+    --text="Sélectionnez une catégorie" \
+    --column="Option" --width=520 --height=520 \
+    "Gestionnaire des tâches" \
+    "Wifi / Réseau" \
+    "Bluetooth" \
+    "Son / Volume" \
+    "Affichage" \
+    "Comptes utilisateurs" \
+    "Date et heure" \
+    "Programmes installés (Synaptic)" \
+    "Pare-feu / Sécurité" \
+    "Mises à jour système" \
+    "Imprimantes" \
+    "Disques (GParted)" \
+    "Sauvegarde (Timeshift)" \
+    "Informations système" \
+    "Personnalisation (thème)" \
+    "Quitter")
+
+case "$CHOICE" in
+    "Gestionnaire des tâches") xfce4-taskmanager ;;
+    "Wifi / Réseau") nm-connection-editor ;;
+    "Bluetooth") blueman-manager ;;
+    "Son / Volume") pavucontrol ;;
+    "Affichage") xfce4-display-settings ;;
+    "Comptes utilisateurs")
+        zenity --info --text="Utilisateur actuel : $USER\nPour créer un compte :\n  sudo adduser <nom>" ;;
+    "Date et heure") xfce4-terminal -e "sh -c 'sudo dpkg-reconfigure tzdata; read -p \"Entrée pour fermer...\"'" ;;
+    "Programmes installés (Synaptic)") sudo synaptic ;;
+    "Pare-feu / Sécurité")
+        sudo ufw enable 2>/dev/null
+        zenity --info --text="Pare-feu (ufw) activé.\nStatut :\n$(sudo ufw status)" ;;
+    "Mises à jour système")
+        xfce4-terminal -e "sh -c 'sudo apt update && sudo apt upgrade -y; read -p \"Entrée pour fermer...\"'" ;;
+    "Imprimantes") system-config-printer ;;
+    "Disques (GParted)") sudo gparted ;;
+    "Sauvegarde (Timeshift)") sudo timeshift-launcher ;;
+    "Informations système")
+        zenity --text-info --title="Informations système" --width=600 --height=500 \
+            --filename=<(inxi -Fxz 2>/dev/null || neofetch --stdout) ;;
+    "Personnalisation (thème)") xfce4-appearance-settings ;;
+    "Quitter"|"") break ;;
+esac
+done

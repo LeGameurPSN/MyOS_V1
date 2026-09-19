@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=PSN_OS Setup
+Exec=/usr/local/bin/psnos-oobe
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
